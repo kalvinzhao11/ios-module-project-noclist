@@ -43,40 +43,51 @@ let frank = (coverName: "Frank Barnes", realName: "Dale Dye", accessLevel: 9, co
 
 //: ## Step 2
 //: Place the above constants inside an array. Declare this array as a constant as well.
-let agents = [ethan, jim, claire, eugene, franz, luther, sarah, hannah, jack, frank]
+let allAgents = [ethan, jim, claire, eugene, franz, luther, sarah, hannah, jack, frank]
 
 
 //: ## Step 3
 //: Create a function that calculates the total number of compromised agents. Inside the function, iterate over the array of agents to determine which ones are compromised. Return the total count.
-func totalCompromised() -> Int{
+typealias agent = (coverName: String, realName: String, accessLevel: Int, compromised: Bool)
+func totalCompromised(_ input: [agent]) -> Int{
     var count = 0
-    for tuples in agents{
+    for tuples in input{
         if (tuples.compromised == true ){
             count += 1
         }
     }
     return count
 }
-
 //: ## Step 4
 //: Call the above function to find the total number of compromised agents and then print a sentence that says "# agents have been compromised!" using string interpolation.
-print(" \(totalCompromised()) agents have been compromised!")
+print(" \(totalCompromised(allAgents)) agents have been compromised!")
 
 
 //: ## Step 5
 //: Create a function called "findCleanAgents" that both prints the cover names of all uncompromised agents, as well as returns an array of agents that are uncompromised.
-
+func findCleanAgent(_ allAgents: [agent]) -> [agent]{
+    var uncompromisedAgent: [agent] = []
+    for tuples in allAgents{
+        if (tuples.compromised == false ){
+            print(tuples.coverName)
+            uncompromisedAgent.append(tuples)
+        }
+    }
+    return uncompromisedAgent
+}
 
 
 //: ## Step 6
 //: Call the above function to find the total number of clean agents and print a message that says "# clean agents out of # total agents." Use the total number of agents in the array from step 2 as the second number in the string.
-
+let spyCount = findCleanAgent(allAgents).count
+let totalCount = allAgents.count
+print("\(spyCount) clean agents out of \(totalCount) total agents")
 
 
 //: ## Step 7
 //: Create a function called "findHighRisk" that prints out the real names and access levels of agents with level 8 or higher. If one of these agents is also currently compromised, add `**WARNING** **COMPROMISED**` to the end of the string that includes their name and access level.
 //: - Example: `Jon Voight, level: 9 **WARNING** **COMPROMISED**`
-
+func findHighRisk(_ )
 
 
 //: ## Step 8
