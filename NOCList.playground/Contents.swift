@@ -43,17 +43,24 @@ let frank = (coverName: "Frank Barnes", realName: "Dale Dye", accessLevel: 9, co
 
 //: ## Step 2
 //: Place the above constants inside an array. Declare this array as a constant as well.
-
+let agents = [ethan, jim, claire, eugene, franz, luther, sarah, hannah, jack, frank]
 
 
 //: ## Step 3
 //: Create a function that calculates the total number of compromised agents. Inside the function, iterate over the array of agents to determine which ones are compromised. Return the total count.
-
-
+func totalCompromised() -> Int{
+    var count = 0
+    for tuples in agents{
+        if (tuples.compromised == true ){
+            count += 1
+        }
+    }
+    return count
+}
 
 //: ## Step 4
 //: Call the above function to find the total number of compromised agents and then print a sentence that says "# agents have been compromised!" using string interpolation.
-
+print(" \(totalCompromised()) agents have been compromised!")
 
 
 //: ## Step 5
